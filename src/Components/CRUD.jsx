@@ -38,7 +38,7 @@ const CRUD = () => {
     e.preventDefault()
     console.log(userData)
 try{
-        const api =await axiosInstance.post("http://localhost:4000/create",userData)
+        const api =await axiosInstance.post("/create",userData)
         console.log(api)
         toast.success("successfully created")
        console.log(api.data)
@@ -57,7 +57,7 @@ try{
 
     //Show Data Handler 
 let showHandler = async ()=>{
-  let data =await axiosInstance.get("http://localhost:4000/showusers")
+  let data =await axiosInstance.get("/showusers")
 //   console.log(data.data)
   setShowData(data.data)
  
@@ -70,7 +70,7 @@ let deleteHandler = async (id)=>{
    
     try{
 
-            let data = await axiosInstance.delete(`http://localhost:4000/deleteusers/${ID}`)
+            let data = await axiosInstance.delete(`/deleteusers/${ID}`)
             console.log(data.data.message)
 
             showHandler()
@@ -110,7 +110,7 @@ let updateHandler = async (e) => {
     try {
         
         const api = await axiosInstance.put(
-            `http://localhost:4000/update/${updateData._id}`, 
+            `/update/${updateData._id}`, 
             newData 
         );
 
