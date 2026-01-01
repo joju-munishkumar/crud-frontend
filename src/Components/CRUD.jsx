@@ -71,8 +71,8 @@ let deleteHandler = async (id)=>{
     try{
 
             let data = await axiosInstance.delete(`/deleteusers/${ID}`)
-            console.log(data.data.message)
             toast.success("User Deleted")
+            console.log(data.data.message)
             showHandler()
             
 
