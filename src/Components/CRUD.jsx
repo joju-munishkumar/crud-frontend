@@ -119,7 +119,8 @@ let updateHandler = async (e) => {
        
         showHandler();
         setnewData({ name: '', email: '', password: '' });
-        alert("User Updated ✅✅")
+        toast.success("User Updated Successfully ✅✅")
+       
         setupdateData({});
 
     } catch (err) {
