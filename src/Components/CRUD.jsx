@@ -1,9 +1,9 @@
 import React from 'react'
-import axiosInstance from 'axiosInstance'
+
 import { useState } from 'react'
 import { useEffect } from 'react'
 import {toast} from 'react-toastify'
-import axiosInstanceInstance from '../../utils/axiosInstanceInstance'
+import axiosInstance from '../../utils/axiosInstance'
 
 
 const CRUD = () => {
@@ -98,9 +98,9 @@ let updateFetch = async (e)=>{
 
 
 let updateHandler = async (e) => {
-    e.preventDefault(); // Form ko reload hone se rokein
+    e.preventDefault(); 
 
-    // 1. Check karein ki koi user ID selected hai bhi ya nahin
+   
     if (!updateData._id) {
         console.log("No user selected to update.");
         alert("Pehle table se ek user select karein.");
@@ -108,21 +108,21 @@ let updateHandler = async (e) => {
     }
 
     try {
-        // 2. 'http' (na ki https) aur 'updateData._id' (na ki e._id) ka istemaal karein
+        
         const api = await axiosInstance.put(
-            `http://localhost:4000/update/${updateData._id}`, // YEH FIX HAI
-            newData // Yeh aapke form ka data hai (jo sahi hai)
+            `http://localhost:4000/update/${updateData._id}`, 
+            newData 
         );
 
         console.log(api.data.message || "User updated successfully!");
 
-        // 3. Success ke baad, table ko refresh karein aur form clear karein
+       
         showHandler();
         setnewData({ name: '', email: '', password: '' });
-        setupdateData({}); // Selected user ko bhi clear kar dein
+        setupdateData({});
 
     } catch (err) {
-        // Error ko a_chhe se handle karein
+        
         console.log("Error in updateHandler:", err.response?.data?.message || err.message);
     }
 }
