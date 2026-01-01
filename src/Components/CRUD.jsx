@@ -1,8 +1,9 @@
 import React from 'react'
-import axios from 'axios'
+import axiosInstance from 'axiosInstance'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import {toast} from 'react-toastify'
+import axiosInstanceInstance from '../../utils/axiosInstanceInstance'
 
 
 const CRUD = () => {
@@ -37,7 +38,7 @@ const CRUD = () => {
     e.preventDefault()
     console.log(userData)
 try{
-        const api =await axios.post("http://localhost:4000/create",userData)
+        const api =await axiosInstance.post("http://localhost:4000/create",userData)
         console.log(api)
         toast.success("successfully created")
        console.log(api.data)
@@ -56,7 +57,7 @@ try{
 
     //Show Data Handler 
 let showHandler = async ()=>{
-  let data =await axios.get("http://localhost:4000/showusers")
+  let data =await axiosInstance.get("http://localhost:4000/showusers")
 //   console.log(data.data)
   setShowData(data.data)
  
@@ -69,7 +70,7 @@ let deleteHandler = async (id)=>{
    
     try{
 
-            let data = await axios.delete(`http://localhost:4000/deleteusers/${ID}`)
+            let data = await axiosInstance.delete(`http://localhost:4000/deleteusers/${ID}`)
             console.log(data.data.message)
 
             showHandler()
@@ -108,7 +109,7 @@ let updateHandler = async (e) => {
 
     try {
         // 2. 'http' (na ki https) aur 'updateData._id' (na ki e._id) ka istemaal karein
-        const api = await axios.put(
+        const api = await axiosInstance.put(
             `http://localhost:4000/update/${updateData._id}`, // YEH FIX HAI
             newData // Yeh aapke form ka data hai (jo sahi hai)
         );
