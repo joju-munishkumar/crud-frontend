@@ -119,6 +119,7 @@ let updateHandler = async (e) => {
        
         showHandler();
         setnewData({ name: '', email: '', password: '' });
+        alert("User Updated ✅✅")
         setupdateData({});
 
     } catch (err) {
